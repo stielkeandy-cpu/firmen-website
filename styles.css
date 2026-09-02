@@ -1476,3 +1476,36 @@ ul { list-style: none; }
 @media (max-width: 700px) {
   .job-points { grid-template-columns: 1fr; }
 }
+
+.tarif-cat {
+  color: var(--primary);
+  font-size: 1.15rem;
+  margin: 2.25rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--accent);
+}
+.tarif-note-inline {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+.pricing-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.pricing-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1000px) {
+  .pricing-grid-3,
+  .pricing-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .pricing-grid-3,
+  .pricing-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}

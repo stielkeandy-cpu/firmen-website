@@ -161,20 +161,33 @@ if (bookingForm) {
     const min = parseFloat(opt.getAttribute('data-min'));
     const max = parseFloat(opt.getAttribute('data-max'));
     const name = opt.getAttribute('data-name');
+    const unit = opt.getAttribute('data-unit') || 'm2';
     const freq = parseFloat(freqSelect.value) || 1;
 
-    // Bei höherer Frequenz leichte Rabatt-Andeutung (nur Anzeige, unverbindlich)
     let discount = 1;
     if (freq >= 5) discount = 0.9;
     else if (freq >= 3) discount = 0.93;
     else if (freq >= 2) discount = 0.95;
 
-    const minTotal = min * area * discount;
-    const maxTotal = max * area * discount;
+    let minTotal, maxTotal, unitLabel;
+    if (unit === 'hour') {
+      // area field = Stunden
+      minTotal = min * area * discount;
+      maxTotal = max * area * discount;
+      unitLabel = area + ' Std.';
+    } else if (unit === 'flat') {
+      minTotal = min;
+      maxTotal = max;
+      unitLabel = 'Festpreis-Rahmen';
+    } else {
+      minTotal = min * area * discount;
+      maxTotal = max * area * discount;
+      unitLabel = area + ' m²';
+    }
 
     let freqText = freqSelect.options[freqSelect.selectedIndex].text;
-    priceEl.textContent = formatEuro(minTotal) + ' – ' + formatEuro(maxTotal);
-    detailEl.textContent = name + ' · ' + area + ' m² · ' + freqText + (discount < 1 ? ' (Richtwert mit Frequenzvorteil)' : '');
+    priceEl.textContent = formatEuro(minTotal) + (minTotal !== maxTotal ? ' – ' + formatEuro(maxTotal) : '');
+    detailEl.textContent = name + ' · ' + unitLabel + ' · ' + freqText + (discount < 1 && unit !== 'flat' ? ' (Richtwert mit Staffelvorteil)' : '');
 
     resultBox.dataset.name = name;
     resultBox.dataset.area = area;
