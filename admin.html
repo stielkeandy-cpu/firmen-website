@@ -35,6 +35,7 @@
   <div id="loginView" class="auth-wrap booking-box">
     <h2>Admin-Login</h2>
     <p class="booking-intro">Nur für Freigabe von Bewertungen und interne Verwaltung.</p>
+    <p id="adminLoginHint" class="form-note"></p>
     <form id="adminLoginForm" class="booking-form">
       <div class="form-group">
         <label for="adminPass">Passwort</label>
@@ -64,6 +65,8 @@
     <button type="button" id="copyJson" class="btn btn-primary">JSON kopieren</button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="auth-config.js"></script>
   <script src="admin.js"></script>
 </body>

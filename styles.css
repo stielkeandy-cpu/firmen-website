@@ -19,7 +19,9 @@
 
 html { scroll-behavior: smooth; }
 
+html { overflow-x: hidden; }
 body {
+  overflow-x: hidden;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   line-height: 1.6;
@@ -617,11 +619,11 @@ ul { list-style: none; }
 /* ===== Floating Action Buttons ===== */
 .fab-container {
   position: fixed;
-  right: 1.25rem;
-  top: 5.5rem;
+  right: 1rem;
+  bottom: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
   z-index: 90;
 }
 
@@ -1350,8 +1352,8 @@ ul { list-style: none; }
 /* Scroll top */
 .scroll-top {
   position: fixed;
-  right: 1.25rem;
-  top: 16.5rem;
+  right: 1rem;
+  bottom: 12.5rem;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -1618,8 +1620,8 @@ ul { list-style: none; }
 /* ===== Chatbot ===== */
 .chat-widget {
   position: fixed;
-  right: 1.25rem;
-  top: 18.5rem;
+  right: 1rem;
+  bottom: 15.5rem;
   z-index: 120;
   font-family: inherit;
 }
@@ -1641,7 +1643,7 @@ ul { list-style: none; }
 .chat-panel {
   position: absolute;
   right: 0;
-  top: 3.2rem;
+  bottom: 3.4rem;
   width: min(360px, calc(100vw - 2rem));
   height: 420px;
   background: #fff;
@@ -1743,8 +1745,27 @@ ul { list-style: none; }
   font-size: 1rem;
 }
 @media (max-width: 480px) {
-  .chat-widget { right: 0.75rem; top: 15rem; }
-  .fab-container { top: 4.5rem; right: 0.75rem; }
-  .scroll-top { top: 14.5rem; right: 0.75rem; }
+  .chat-widget { right: 0.65rem; bottom: 13.5rem; }
+  .fab-container { bottom: 1rem; right: 0.65rem; }
+  .scroll-top { bottom: 11rem; right: 0.65rem; }
+  .fab { width: 48px; height: 48px; }
+  .chat-toggle { padding: 0.55rem 0.85rem; font-size: 0.85rem; }
+  .chat-panel { width: min(100vw - 1.2rem, 360px); height: min(70vh, 420px); }
+  .pricing-grid-5, .pricing-grid-4, .pricing-grid-3, .pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .calc-grid { grid-template-columns: 1fr !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+  .header-inner { padding-right: 0.5rem; }
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .price-card, .booking-box, .calculator-box { overflow-wrap: anywhere; }
+  .hero h1 { font-size: 1.45rem; line-height: 1.3; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons .btn { width: 100%; text-align: center; }
+  .express-actions { width: 100%; }
+  .express-actions .btn { flex: 1; text-align: center; }
+  body { padding-bottom: 5.5rem; }
+  .cookie-banner { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
   .chat-toggle-label { display: none; }
 }

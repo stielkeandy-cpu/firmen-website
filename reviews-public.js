@@ -10,28 +10,24 @@
     return '★'.repeat(n) + '☆'.repeat(Math.max(0, 5 - n));
   }
 
-  function card(r) {
-    return '<blockquote class="testimonial-card">' +
-      '<div class="stars">' + stars(r.stars) + '</div>' +
-      '<p>„' + escapeHtml(r.text) + '“</p>' +
-      '<footer>— ' + escapeHtml(r.name) + (r.date ? ', ' + escapeHtml(r.date) : '') + '</footer>' +
-      '</blockquote>';
-  }
-
   function escapeHtml(s) {
-    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
-  function mergeUnique(a, b) {
-    const seen = {};
-    const out = [];
-    (a || []).concat(b || []).forEach(function (r) {
-      const k = (r.id || '') + '|' + (r.name || '') + '|' + (r.text || '');
-      if (seen[k]) return;
-      seen[k] = 1;
-      out.push(r);
-    });
-    return out;
+  function card(r) {
+    const text = r.body || r.text || '';
+    const date = r.created_at ? String(r.created_at).slice(0, 10) : (r.date || '');
+    return (
+      '<blockquote class="testimonial-card">' +
+      '<div class="stars">' + stars(r.stars) + '</div>' +
+      '<p>„' + escapeHtml(text) + '“</p>' +
+      '<footer>— ' + escapeHtml(r.name) + (date ? ', ' + escapeHtml(date) : '') + '</footer>' +
+      '</blockquote>'
+    );
   }
 
   function render(list) {
@@ -43,59 +39,126 @@
     grid.innerHTML = list.map(card).join('');
   }
 
-  // Load file + local published
-  let fileReviews = [];
-  fetch('reviews.json', { cache: 'no-store' })
-    .then(function (r) { return r.ok ? r.json() : []; })
-    .catch(function () { return []; })
-    .then(function (data) {
-      fileReviews = Array.isArray(data) ? data : [];
-      let local = [];
-      try { local = JSON.parse(localStorage.getItem(PUBLISHED_KEY) || '[]'); } catch (e) {}
-      render(mergeUnique(local, fileReviews));
+  function mergeUnique(a, b) {
+    const seen = {};
+    const out = [];
+    (a || []).concat(b || []).forEach(function (r) {
+      const text = r.body || r.text || '';
+      const k = (r.id || '') + '|' + (r.name || '') + '|' + text;
+      if (seen[k]) return;
+      seen[k] = 1;
+      out.push(r);
     });
+    return out;
+  }
+
+  async function loadReviews() {
+    const client = window.initStielkeSupabase && window.initStielkeSupabase();
+    if (client) {
+      try {
+        const { data, error } = await client
+          .from('reviews')
+          .select('id,name,body,stars,created_at,status')
+          .eq('status', 'approved')
+          .order('created_at', { ascending: false });
+        if (error) throw error;
+        render(data || []);
+        return;
+      } catch (e) {
+        console.warn('Supabase reviews load failed, fallback', e);
+      }
+    }
+
+    let fileReviews = [];
+    try {
+      const res = await fetch('reviews.json', { cache: 'no-store' });
+      if (res.ok) fileReviews = await res.json();
+    } catch (e) {}
+    let local = [];
+    try {
+      local = JSON.parse(localStorage.getItem(PUBLISHED_KEY) || '[]');
+    } catch (e) {}
+    render(mergeUnique(local, Array.isArray(fileReviews) ? fileReviews : []));
+  }
+
+  loadReviews();
 
   if (form) {
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const name = document.getElementById('rev-name').value.trim();
       const text = document.getElementById('rev-text').value.trim();
+      const email = (document.getElementById('rev-email') || {}).value || '';
       const starsVal = parseInt(document.getElementById('rev-stars').value, 10);
-      const entry = {
-        id: 'p' + Date.now(),
-        name: name,
-        text: text,
-        stars: starsVal,
-        date: new Date().toISOString().slice(0, 10)
-      };
-
-      // Pending for admin (same browser)
-      try {
-        const pending = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
-        pending.unshift(entry);
-        localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
-      } catch (err) {}
-
-      const action = form.getAttribute('action');
       const btn = document.getElementById('reviewSubmit');
-      if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet …'; }
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Wird gesendet …';
+      }
 
-      try {
-        if (action && action.indexOf('formspree.io') !== -1) {
-          const res = await fetch(action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { Accept: 'application/json' }
-          });
-          if (!res.ok) throw new Error('send failed');
+      const client = window.initStielkeSupabase && window.initStielkeSupabase();
+      let sent = false;
+
+      if (client) {
+        try {
+          const { error } = await client.from('reviews').insert([
+            {
+              name: name,
+              body: text,
+              stars: starsVal,
+              email: email || null,
+              status: 'pending'
+            }
+          ]);
+          if (error) throw error;
+          sent = true;
+        } catch (err) {
+          console.warn('Supabase insert failed', err);
         }
+      }
+
+      if (!sent) {
+        try {
+          const entry = {
+            id: 'p' + Date.now(),
+            name: name,
+            text: text,
+            stars: starsVal,
+            date: new Date().toISOString().slice(0, 10)
+          };
+          const pending = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+          pending.unshift(entry);
+          localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+        } catch (err) {}
+
+        const action = form.getAttribute('action');
+        if (action && action.indexOf('formspree.io') !== -1) {
+          try {
+            const res = await fetch(action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' }
+            });
+            if (!res.ok) throw new Error('formspree');
+            sent = true;
+          } catch (err) {
+            sent = false;
+          }
+        } else {
+          sent = true;
+        }
+      }
+
+      if (sent) {
         form.style.display = 'none';
         if (success) success.style.display = 'block';
         form.reset();
-      } catch (err) {
-        alert('Senden fehlgeschlagen. Bitte später erneut versuchen oder per E-Mail schreiben.');
-      } finally {
-        if (btn) { btn.disabled = false; btn.textContent = 'Bewertung absenden'; }
+      } else {
+        alert('Senden fehlgeschlagen. Bitte später erneut versuchen.');
+      }
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Bewertung absenden';
       }
     });
   }
