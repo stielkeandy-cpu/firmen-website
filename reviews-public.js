@@ -53,22 +53,6 @@
   }
 
   async function loadReviews() {
-    const client = window.initStielkeSupabase && window.initStielkeSupabase();
-    if (client) {
-      try {
-        const { data, error } = await client
-          .from('reviews')
-          .select('id,name,body,stars,created_at,status')
-          .eq('status', 'approved')
-          .order('created_at', { ascending: false });
-        if (error) throw error;
-        render(data || []);
-        return;
-      } catch (e) {
-        console.warn('Supabase reviews load failed, fallback', e);
-      }
-    }
-
     let fileReviews = [];
     try {
       const res = await fetch('reviews.json', { cache: 'no-store' });
@@ -88,7 +72,6 @@
       e.preventDefault();
       const name = document.getElementById('rev-name').value.trim();
       const text = document.getElementById('rev-text').value.trim();
-      const email = (document.getElementById('rev-email') || {}).value || '';
       const starsVal = parseInt(document.getElementById('rev-stars').value, 10);
       const btn = document.getElementById('reviewSubmit');
       if (btn) {
@@ -96,57 +79,35 @@
         btn.textContent = 'Wird gesendet …';
       }
 
-      const client = window.initStielkeSupabase && window.initStielkeSupabase();
-      let sent = false;
+      try {
+        const entry = {
+          id: 'p' + Date.now(),
+          name: name,
+          text: text,
+          stars: starsVal,
+          date: new Date().toISOString().slice(0, 10)
+        };
+        const pending = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+        pending.unshift(entry);
+        localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+      } catch (err) {}
 
-      if (client) {
+      let sent = false;
+      const action = form.getAttribute('action');
+      if (action && action.indexOf('formspree.io') !== -1) {
         try {
-          const { error } = await client.from('reviews').insert([
-            {
-              name: name,
-              body: text,
-              stars: starsVal,
-              email: email || null,
-              status: 'pending'
-            }
-          ]);
-          if (error) throw error;
+          const res = await fetch(action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (!res.ok) throw new Error('formspree');
           sent = true;
         } catch (err) {
-          console.warn('Supabase insert failed', err);
+          sent = false;
         }
-      }
-
-      if (!sent) {
-        try {
-          const entry = {
-            id: 'p' + Date.now(),
-            name: name,
-            text: text,
-            stars: starsVal,
-            date: new Date().toISOString().slice(0, 10)
-          };
-          const pending = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
-          pending.unshift(entry);
-          localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
-        } catch (err) {}
-
-        const action = form.getAttribute('action');
-        if (action && action.indexOf('formspree.io') !== -1) {
-          try {
-            const res = await fetch(action, {
-              method: 'POST',
-              body: new FormData(form),
-              headers: { Accept: 'application/json' }
-            });
-            if (!res.ok) throw new Error('formspree');
-            sent = true;
-          } catch (err) {
-            sent = false;
-          }
-        } else {
-          sent = true;
-        }
+      } else {
+        sent = true;
       }
 
       if (sent) {
