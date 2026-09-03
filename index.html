@@ -67,6 +67,32 @@
     </div>
   </section>
 
+  <!-- Vertrauens-Leiste -->
+  <div class="trust-bar">
+    <div class="container trust-bar-inner">
+      <div class="trust-item"><span class="trust-icon">✓</span> Regional aus Salzatal</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Faire Staffelpreise</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> 25 km Anfahrt gratis</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Neukunden −20 % (1. Monat)</div>
+      <div class="trust-item"><span class="trust-icon">✓</span> Tiefpreis-Garantie</div>
+    </div>
+  </div>
+
+  <!-- Express / Notdienst Hinweis -->
+  <div class="express-banner">
+    <div class="container express-inner">
+      <div class="express-text">
+        <strong>Express &amp; kurzfristig?</strong>
+        <span>Dringende Reinigung oder kurzfristiger Termin – rufen Sie an oder schreiben Sie per WhatsApp.</span>
+      </div>
+      <div class="express-actions">
+        <a href="tel:+49155674711603" class="btn btn-primary btn-sm">Anrufen</a>
+        <a href="https://wa.me/491742988851?text=Hallo%2C%20ich%20brauche%20kurzfristig%20eine%20Reinigung." class="btn btn-outline btn-sm express-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#buchung" class="btn btn-outline btn-sm" style="color:var(--primary);border-color:var(--primary);">Online anfragen</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Über Uns -->
   <section id="ueber-uns" class="section">
     <div class="container">
@@ -325,6 +351,13 @@
         <p><strong>Tiefpreis-Garantie 2026:</strong> Günstigeres Konkurrenzangebot? Wir unterbieten um 5 %. · 20 % Neukunden-Rabatt im 1. Monat · keine Anfahrt im 25-km-Umkreis · Handwerkerleistungen oft steuerlich absetzbar (§ 35a EStG). Alle Angaben Richtwerte; Endpreis nach Absprache.</p>
       </div>
 
+      <div class="free-visit-box">
+        <strong>Kostenlose Besichtigung / Beratung</strong>
+        <p>Unsicher bei der Tarifwahl? Wir schauen uns das Objekt unverbindlich an und erstellen ein klares Angebot – ohne versteckte Kosten.</p>
+        <a href="#buchung" class="btn btn-primary btn-sm">Besichtigung anfragen</a>
+        <a href="tel:+49155674711603" class="btn btn-outline btn-sm" style="color:var(--primary);border-color:var(--primary);">Direkt anrufen</a>
+      </div>
+
       <!-- Auftragskalkulator -->
       <div class="calculator-box" id="kalkulator">
         <h3>Auftrag selbst kalkulieren</h3>
@@ -389,7 +422,7 @@
       <!-- Anfrage / Buchungsformular (E-Mail an dich) -->
       <div class="booking-box" id="buchung">
         <h3>Anfrage / Termin anfragen</h3>
-        <p class="booking-intro">Füllen Sie das Formular aus. Sie erhalten eine Bestätigung auf der Seite – wir bekommen Ihre Anfrage per E-Mail und melden uns innerhalb von 24 Stunden.</p>
+        <p class="booking-intro">Füllen Sie das Formular aus. Sie erhalten eine Bestätigung auf der Seite – wir bekommen Ihre Anfrage per E-Mail und melden uns innerhalb von 24 Stunden. Pflichtfelder sind mit * markiert.</p>
 
         <!--
           E-MAIL EMPFANGEN MIT FORMSPREE (kostenlos, ca. 2 Min.):
@@ -455,14 +488,20 @@
               <input type="number" id="b-area" name="Flaeche_m2" min="1" step="1" placeholder="z. B. 35">
             </div>
             <div class="form-group">
-              <label for="b-date">Gewünschter Termin / Zeitraum</label>
-              <input type="text" id="b-date" name="Wunschtermin" placeholder="z. B. nächste Woche, Mo–Fr Vormittag">
+              <label for="b-date">Gewünschter Termin / Zeitraum *</label>
+              <input type="text" id="b-date" name="Wunschtermin" required placeholder="z. B. nächste Woche, Mo–Fr Vormittag">
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="b-address">Objektadresse</label>
-            <input type="text" id="b-address" name="Objektadresse" placeholder="Straße, PLZ, Ort">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-street">Straße und Hausnummer *</label>
+              <input type="text" id="b-street" name="Strasse" required placeholder="z. B. Naundorfer Weg 4" autocomplete="street-address">
+            </div>
+            <div class="form-group">
+              <label for="b-city">PLZ und Ort *</label>
+              <input type="text" id="b-city" name="PLZ_Ort" required placeholder="z. B. 06198 Salzatal" autocomplete="address-level2">
+            </div>
           </div>
 
           <div class="form-group">
@@ -695,13 +734,6 @@
               <input type="tel" id="a-phone" name="Telefon" required placeholder="Ihre Telefonnummer">
             </div>
             <div class="form-group">
-              <label for="a-city">Wohnort / PLZ</label>
-              <input type="text" id="a-city" name="Wohnort" placeholder="z. B. 06198 Salzatal">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
               <label for="a-job">Gewünschte Tätigkeit *</label>
               <select id="a-job" name="Taetigkeit" required>
                 <option value="">Bitte wählen …</option>
@@ -713,16 +745,27 @@
                 <option value="Initiativbewerbung">Initiativbewerbung</option>
               </select>
             </div>
+          </div>
+
+          <div class="form-row">
             <div class="form-group">
-              <label for="a-start">Frühester Beginn</label>
-              <input type="text" id="a-start" name="Beginn" placeholder="z. B. sofort / 01.10.2026">
+              <label for="a-street">Straße und Hausnummer *</label>
+              <input type="text" id="a-street" name="Strasse" required placeholder="z. B. Musterstraße 12" autocomplete="street-address">
+            </div>
+            <div class="form-group">
+              <label for="a-city">PLZ und Ort *</label>
+              <input type="text" id="a-city" name="PLZ_Ort" required placeholder="z. B. 06198 Salzatal" autocomplete="address-level2">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="a-exp">Erfahrung in der Reinigung</label>
-              <select id="a-exp" name="Erfahrung">
+              <label for="a-start">Frühester Beginn *</label>
+              <input type="text" id="a-start" name="Beginn" required placeholder="z. B. sofort / 01.10.2026">
+            </div>
+            <div class="form-group">
+              <label for="a-exp">Erfahrung in der Reinigung *</label>
+              <select id="a-exp" name="Erfahrung" required>
                 <option value="">Bitte wählen …</option>
                 <option value="Keine / Quereinsteiger">Keine / Quereinsteiger</option>
                 <option value="Unter 1 Jahr">Unter 1 Jahr</option>
@@ -730,15 +773,22 @@
                 <option value="Über 3 Jahre">Über 3 Jahre</option>
               </select>
             </div>
+          </div>
+
+          <div class="form-row">
             <div class="form-group">
-              <label for="a-license">Führerschein / eigenes Auto</label>
-              <select id="a-license" name="Mobilitaet">
+              <label for="a-license">Führerschein / eigenes Auto *</label>
+              <select id="a-license" name="Mobilitaet" required>
                 <option value="">Bitte wählen …</option>
                 <option value="Führerschein Klasse B">Führerschein Klasse B</option>
                 <option value="Führerschein + Auto">Führerschein + Auto</option>
                 <option value="Öffentliche Verkehrsmittel">Öffentliche Verkehrsmittel</option>
                 <option value="Zu Fuß / Fahrrad">Zu Fuß / Fahrrad</option>
               </select>
+            </div>
+            <div class="form-group">
+              <label for="a-job2" style="visibility:hidden">–</label>
+              <span class="form-note" style="display:block;margin-top:0.5rem;">Mit * markierte Felder sind Pflicht.</span>
             </div>
           </div>
 
@@ -797,7 +847,7 @@
             <span>Alle Reinigungsarten</span>
           </div>
           <div class="contact-item">
-            <strong>Öffnungszeiten</strong>
+            <strong>Öffnungszeiten</strong> <span id="openStatus" class="open-status">…</span>
             <span>Mo.–Sa. 08:00–18:00 Uhr</span>
           </div>
           <div class="contact-item">
@@ -823,6 +873,7 @@
         <div class="contact-form-wrapper">
           <h3>Nachricht senden</h3>
           <form class="contact-form" action="https://formspree.io/f/xgaeagza" method="POST">
+            <input type="hidden" name="_subject" value="Kontaktanfrage – Allround Service Stielke">
             <div class="form-group">
               <label for="name">Name *</label>
               <input type="text" id="name" name="Name" required placeholder="Ihr Name">
@@ -832,12 +883,26 @@
               <input type="email" id="email" name="E-Mail" required placeholder="Ihre E-Mail-Adresse">
             </div>
             <div class="form-group">
-              <label for="phone">Telefon</label>
-              <input type="tel" id="phone" name="Telefon" placeholder="Ihre Telefonnummer">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" name="Telefon" required placeholder="Ihre Telefonnummer">
+            </div>
+            <div class="form-group">
+              <label for="c-street">Straße und Hausnummer *</label>
+              <input type="text" id="c-street" name="Strasse" required placeholder="z. B. Musterstraße 12" autocomplete="street-address">
+            </div>
+            <div class="form-group">
+              <label for="c-city">PLZ und Ort *</label>
+              <input type="text" id="c-city" name="PLZ_Ort" required placeholder="z. B. 06198 Salzatal" autocomplete="address-level2">
             </div>
             <div class="form-group">
               <label for="message">Nachricht *</label>
               <textarea id="message" name="Nachricht" rows="5" required placeholder="Wie können wir Ihnen helfen?"></textarea>
+            </div>
+            <div class="form-group form-check">
+              <label>
+                <input type="checkbox" name="Datenschutz" required>
+                Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung zu. *
+              </label>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Nachricht absenden</button>
             <p class="form-note">Oder rufen Sie uns einfach an – wir melden uns innerhalb von 24 Stunden zurück.</p>
@@ -919,6 +984,45 @@
   </div>
 
   <button type="button" id="scrollTop" class="scroll-top" aria-label="Nach oben" title="Nach oben">↑</button>
+
+  <!-- Chatbot -->
+  <div id="chatWidget" class="chat-widget">
+    <button type="button" id="chatToggle" class="chat-toggle" aria-label="Chat öffnen" title="Hilfe-Chat">
+      <span class="chat-toggle-icon">💬</span>
+      <span class="chat-toggle-label">Hilfe</span>
+    </button>
+    <div id="chatPanel" class="chat-panel" hidden>
+      <div class="chat-header">
+        <div>
+          <strong>Allround Service Stielke</strong>
+          <span class="chat-status">Online · Antwortet sofort</span>
+        </div>
+        <button type="button" id="chatClose" class="chat-close" aria-label="Schließen">×</button>
+      </div>
+      <div id="chatMessages" class="chat-messages" role="log" aria-live="polite"></div>
+      <div class="chat-quick">
+        <button type="button" data-q="preise">Preise</button>
+        <button type="button" data-q="gebiet">Einsatzgebiet</button>
+        <button type="button" data-q="termin">Termin</button>
+        <button type="button" data-q="kontakt">Kontakt</button>
+      </div>
+      <form id="chatForm" class="chat-form">
+        <input type="text" id="chatInput" placeholder="Frage eingeben …" autocomplete="off" maxlength="200">
+        <button type="submit" aria-label="Senden">➤</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Cookie / Datenschutz Hinweis -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Datenschutz-Hinweis" style="display:none;">
+    <div class="cookie-inner">
+      <p>Wir nutzen technisch notwendige Funktionen und externe Dienste (z. B. Formulare, Karten). Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Verstanden</button>
+        <a href="datenschutz.html" class="btn btn-outline btn-sm" style="color:#fff;border-color:rgba(255,255,255,0.5);">Mehr Infos</a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

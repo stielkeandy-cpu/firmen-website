@@ -558,3 +558,152 @@ if (bookingForm) {
     }
   });
 })();
+
+// Cookie-Banner
+(function () {
+  const banner = document.getElementById('cookieBanner');
+  const btn = document.getElementById('cookieAccept');
+  if (!banner) return;
+  try {
+    if (!localStorage.getItem('stielke_cookie_ok')) {
+      banner.style.display = 'block';
+    }
+  } catch (e) {
+    banner.style.display = 'block';
+  }
+  if (btn) {
+    btn.addEventListener('click', function () {
+      try { localStorage.setItem('stielke_cookie_ok', '1'); } catch (e) {}
+      banner.style.display = 'none';
+    });
+  }
+})();
+
+// Öffnungsstatus (Mo–Sa 08–18)
+(function () {
+  const el = document.getElementById('openStatus');
+  if (!el) return;
+  const now = new Date();
+  const day = now.getDay(); // 0 So
+  const h = now.getHours() + now.getMinutes() / 60;
+  const open = day >= 1 && day <= 6 && h >= 8 && h < 18;
+  el.textContent = open ? 'Jetzt geöffnet' : 'Geschlossen';
+  el.className = 'open-status ' + (open ? 'is-open' : 'is-closed');
+  el.setAttribute('title', 'Mo–Sa 08:00–18:00 Uhr');
+})();
+
+// ===== Chatbot (FAQ-Assistent) =====
+(function () {
+  const toggle = document.getElementById('chatToggle');
+  const panel = document.getElementById('chatPanel');
+  const closeBtn = document.getElementById('chatClose');
+  const messages = document.getElementById('chatMessages');
+  const form = document.getElementById('chatForm');
+  const input = document.getElementById('chatInput');
+  if (!toggle || !panel || !messages || !form) return;
+
+  const WA = 'https://wa.me/491742988851?text=';
+  const replies = [
+    {
+      keys: ['preis', 'tarif', 'kosten', 'teuer', 'günstig', 'euro', 'staffel'],
+      text: 'Unsere Preise sind gestaffelt (je mehr Stunden/m², desto günstiger). Beispiele: Haushaltsreinigung ab ca. 13,90–17,90 €/Std., Fenster ab 29 € Festpreis. Details und Kalkulator: unter Tarife auf der Seite. 20 % Neukunden-Rabatt im 1. Monat.'
+    },
+    {
+      keys: ['gebiet', 'region', 'salzatal', 'halle', 'wo', 'umkreis', 'anfahrt', 'kommen'],
+      text: 'Wir sind in Salzatal und der Region Halle (Saale) / Sachsen-Anhalt unterwegs. Im Umkreis von 25 km keine Anfahrtskosten. Unsicher? Einfach anfragen – wir sagen Bescheid.'
+    },
+    {
+      keys: ['termin', 'buchen', 'wann', 'zeit', 'verfügbar', 'angebot'],
+      text: 'Termin anfragen geht über das Formular unter „Tarife & Kalkulator“ oder per Anruf/WhatsApp. Wir melden uns in der Regel innerhalb von 24 Stunden.'
+    },
+    {
+      keys: ['kontakt', 'telefon', 'anruf', 'mail', 'whatsapp', 'nummer', 'email'],
+      text: 'Telefon: 0155 6747 11603 · WhatsApp: 0174 2988851 · E-Mail: allroundservicestielke@web.de · Adresse: Naundorfer Weg 4, 06198 Salzatal.'
+    },
+    {
+      keys: ['fenster', 'glas'],
+      text: 'Fensterputzen inkl. Rahmen: 1–2 Zimmer 29 €, 3–4 Zimmer 39 €, Einfamilienhaus komplett 79 € (Festpreise).'
+    },
+    {
+      keys: ['sozial', 'bürgergeld', 'pflege', 'senior', 'pflegegrad'],
+      text: 'Sozial-Tiefpreis (Nachweis) ab 12,90–14,90 €/Std. · Pflegegrad-Entlastung § 45b oft 0 € Eigenanteil · Senioren-Alltagshilfe ab 14,50–16,90 €/Std.'
+    },
+    {
+      keys: ['bewerbung', 'job', 'stelle', 'arbeit', 'mitarbeiter'],
+      text: 'Offene Bewerbungen über den Bereich „Karriere“ auf der Seite – Formular ausfüllen, wir melden uns bei passenden Stellen.'
+    },
+    {
+      keys: ['rabatt', 'code', 'gutschein', 'aktion'],
+      text: 'Rabattcodes (5–10 €) können im Formular eingelöst werden, z. B. SAUBER5, GLANZ7, STIELKE10. Zusätzlich 20 % Neukunden-Rabatt im ersten Monat.'
+    },
+    {
+      keys: ['hallo', 'hi', 'guten', 'hey', 'moin'],
+      text: 'Hallo! Ich helfe bei Preisen, Terminen, Einsatzgebiet und Kontakt. Tippen Sie eine Frage oder nutzen Sie die Schnellbuttons.'
+    }
+  ];
+
+  function addBubble(text, who) {
+    const div = document.createElement('div');
+    div.className = 'chat-bubble ' + who;
+    div.innerHTML = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function answer(q) {
+    const s = (q || '').toLowerCase();
+    for (let i = 0; i < replies.length; i++) {
+      if (replies[i].keys.some(function (k) { return s.indexOf(k) !== -1; })) {
+        return replies[i].text;
+      }
+    }
+    return 'Dazu habe ich keine fertige Antwort. Schreiben Sie uns direkt per <a href="' + WA + encodeURIComponent('Hallo, ich habe eine Frage: ' + q) + '" target="_blank" rel="noopener">WhatsApp</a>, rufen Sie <a href="tel:+49155674711603">0155 6747 11603</a> an oder nutzen Sie das <a href="#buchung">Anfrageformular</a>.';
+  }
+
+  function openChat() {
+    panel.hidden = false;
+    if (!messages.dataset.welcomed) {
+      addBubble('Willkommen bei Allround Service Stielke! Fragen Sie nach Preisen, Terminen, Einsatzgebiet oder Kontakt – oder tippen Sie frei.', 'bot');
+      messages.dataset.welcomed = '1';
+    }
+    input && input.focus();
+  }
+
+  function closeChat() {
+    panel.hidden = true;
+  }
+
+  toggle.addEventListener('click', function () {
+    if (panel.hidden) openChat();
+    else closeChat();
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const q = (input.value || '').trim();
+    if (!q) return;
+    addBubble(q, 'user');
+    input.value = '';
+    setTimeout(function () {
+      addBubble(answer(q), 'bot');
+    }, 350);
+  });
+
+  document.querySelectorAll('.chat-quick button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const map = {
+        preise: 'Was kosten die Reinigungen?',
+        gebiet: 'In welchem Gebiet seid ihr tätig?',
+        termin: 'Wie kann ich einen Termin anfragen?',
+        kontakt: 'Wie erreiche ich euch?'
+      };
+      const q = map[btn.getAttribute('data-q')] || btn.textContent;
+      openChat();
+      addBubble(q, 'user');
+      setTimeout(function () {
+        addBubble(answer(q), 'bot');
+      }, 300);
+    });
+  });
+})();
