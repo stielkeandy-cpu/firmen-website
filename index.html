@@ -95,6 +95,7 @@
         <a href="#ablauf" class="nav-link">Ablauf</a>
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="#team" class="nav-link">Team</a>
+        <a href="#stimmen" class="nav-link">Bewertungen</a>
         <a href="#bewerbung" class="nav-link">Karriere</a>
         <a href="#kontakt" class="nav-link">Kontakt</a>
       </nav>
@@ -653,31 +654,63 @@
     </div>
   </section>
 
-  <!-- Kundenstimmen -->
+  <!-- Kundenstimmen / Bewertungen -->
   <section id="stimmen" class="section">
     <div class="container">
       <div class="section-header">
-        <h2>Das sagen unsere Kunden</h2>
+        <h2>Kundenbewertungen</h2>
         <div class="divider"></div>
+        <p class="section-intro">Echte Rückmeldungen – freigegebene Bewertungen erscheinen hier.</p>
       </div>
-      <div class="testimonials-grid">
-        <blockquote class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>„Zuverlässig, gründlich und unkompliziert. Die Treppenhausreinigung ist spürbar besser geworden.“</p>
-          <footer>— Privatkunde, Salzatal</footer>
-        </blockquote>
-        <blockquote class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>„Schnelle Rückmeldung und faires Angebot. Büroreinigung läuft seit Monaten reibungslos.“</p>
-          <footer>— Gewerbekunde, Region Halle</footer>
-        </blockquote>
-        <blockquote class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>„Nach dem Umbau eine echte Grundreinigung – alles sauber, ohne Stress für uns.“</p>
-          <footer>— Privatkunde, Salzatal</footer>
-        </blockquote>
+      <div class="testimonials-grid" id="reviewsGrid">
+        <p class="form-note">Bewertungen werden geladen …</p>
       </div>
-      <p class="testimonial-note">Bewertungen beispielhaft – echte Kundenstimmen können Sie jederzeit ergänzen oder von Google übernehmen.</p>
+
+      <div class="booking-box" id="reviewFormBox" style="margin-top:2.5rem;max-width:640px;margin-left:auto;margin-right:auto;">
+        <h3>Bewertung schreiben</h3>
+        <p class="booking-intro">Ihre Bewertung wird geprüft und nach Freigabe veröffentlicht.</p>
+        <form id="reviewForm" class="booking-form" action="https://formspree.io/f/xgaeagza" method="POST">
+          <input type="hidden" name="_subject" value="Neue Kundenbewertung – Freigabe nötig">
+          <input type="hidden" name="Formular" value="Bewertung">
+          <input type="text" name="_gotcha" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rev-name">Name / Anzeige *</label>
+              <input type="text" id="rev-name" name="Name" required placeholder="z. B. Familie M., Sangerhausen" maxlength="80">
+            </div>
+            <div class="form-group">
+              <label for="rev-stars">Sterne *</label>
+              <select id="rev-stars" name="Sterne" required>
+                <option value="5">5 – sehr gut</option>
+                <option value="4">4 – gut</option>
+                <option value="3">3 – okay</option>
+                <option value="2">2 – mangelhaft</option>
+                <option value="1">1 – schlecht</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rev-text">Ihre Bewertung *</label>
+            <textarea id="rev-text" name="Text" rows="4" required maxlength="600" placeholder="Wie war der Service?"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="rev-email">E-Mail (nicht veröffentlicht) *</label>
+            <input type="email" id="rev-email" name="E-Mail" required placeholder="fuer Rueckfragen">
+          </div>
+          <div class="form-group form-check">
+            <label>
+              <input type="checkbox" name="Datenschutz" required>
+              Ich willige in die Veröffentlichung der Bewertung (Name/Text) nach Prüfung ein und habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen. *
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="reviewSubmit">Bewertung absenden</button>
+          <p class="form-note">Nach dem Absenden prüft die Leitung die Bewertung, bevor sie online erscheint.</p>
+        </form>
+        <div id="reviewSuccess" class="booking-success" style="display:none;">
+          <h3>✓ Vielen Dank!</h3>
+          <p>Ihre Bewertung wurde übermittelt und wird nach Prüfung freigeschaltet.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1019,6 +1052,7 @@
         <p>&copy; 2026 Allround Service Stielke. Alle Rechte vorbehalten.</p>
         <div class="footer-legal">
           <a href="impressum.html">Impressum</a>
+          <a href="mitarbeiter.html" style="opacity:0.5">Team</a>
           <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
@@ -1079,6 +1113,8 @@
     </div>
   </div>
 
+  <script src="auth-config.js"></script>
+  <script src="reviews-public.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

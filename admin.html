@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin – Allround Service Stielke</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    .auth-wrap { max-width: 480px; margin: 4rem auto; padding: 2rem; }
+    .admin-wrap { max-width: 900px; margin: 2rem auto; padding: 1rem; }
+    .admin-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+    .admin-card .stars { color: #f59e0b; }
+    .admin-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .hidden { display: none !important; }
+    pre.export { background: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow: auto; font-size: 0.8rem; max-height: 280px; }
+    .login-error { color: #dc2626; font-size: 0.9rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container"><span>Interner Bereich – nicht öffentlich bewerben</span></div>
+  </div>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo">
+        <span class="logo-text">Admin<br><strong>Stielke</strong></span>
+      </a>
+      <a href="index.html" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Zur Website</a>
+    </div>
+  </header>
+
+  <div id="loginView" class="auth-wrap booking-box">
+    <h2>Admin-Login</h2>
+    <p class="booking-intro">Nur für Freigabe von Bewertungen und interne Verwaltung.</p>
+    <form id="adminLoginForm" class="booking-form">
+      <div class="form-group">
+        <label for="adminPass">Passwort</label>
+        <input type="password" id="adminPass" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Anmelden</button>
+      <p id="adminLoginError" class="login-error hidden">Falsches Passwort.</p>
+    </form>
+  </div>
+
+  <div id="adminView" class="admin-wrap hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+      <h2>Bewertungen freigeben</h2>
+      <button type="button" id="adminLogout" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Abmelden</button>
+    </div>
+    <p>Neue Bewertungen kommen per E-Mail (Formspree). Zusätzlich erscheinen Einträge, die im Browser als „ausstehend“ gespeichert wurden. Nach Freigabe: JSON kopieren und in <code>reviews.json</code> speichern, dann hochladen.</p>
+
+    <h3 style="margin:1.5rem 0 0.75rem;">Ausstehend (dieser Browser)</h3>
+    <div id="pendingList"></div>
+
+    <h3 style="margin:1.5rem 0 0.75rem;">Veröffentlicht (dieser Browser + Datei)</h3>
+    <div id="publishedList"></div>
+
+    <h3 style="margin:1.5rem 0 0.75rem;">reviews.json exportieren</h3>
+    <p class="form-note">Inhalt nach Freigaben kopieren → Datei <code>reviews.json</code> ersetzen → auf Server laden.</p>
+    <pre class="export" id="exportJson"></pre>
+    <button type="button" id="copyJson" class="btn btn-primary">JSON kopieren</button>
+  </div>
+
+  <script src="auth-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

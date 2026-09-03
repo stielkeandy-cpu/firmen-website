@@ -1,0 +1,23 @@
+[
+  {
+    "id": "r1",
+    "name": "Familie M., Salzatal",
+    "stars": 5,
+    "text": "Zuverlässig, gründlich und unkompliziert. Die Treppenhausreinigung ist spürbar besser geworden.",
+    "date": "2026-08-12"
+  },
+  {
+    "id": "r2",
+    "name": "Gewerbe K., Region Halle",
+    "stars": 5,
+    "text": "Schnelle Rückmeldung und faires Angebot. Büroreinigung läuft seit Monaten reibungslos.",
+    "date": "2026-07-03"
+  },
+  {
+    "id": "r3",
+    "name": "Privatkunde, Sangerhausen",
+    "stars": 5,
+    "text": "Nach dem Umbau eine echte Grundreinigung – alles sauber, ohne Stress für uns.",
+    "date": "2026-06-20"
+  }
+]

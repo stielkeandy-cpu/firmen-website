@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Mitarbeiter – Allround Service Stielke</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    .auth-wrap { max-width: 480px; margin: 4rem auto; padding: 2rem; }
+    .staff-wrap { max-width: 800px; margin: 2rem auto; padding: 1rem; }
+    .staff-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+    .hidden { display: none !important; }
+    .login-error { color: #dc2626; font-size: 0.9rem; margin-top: 0.5rem; }
+    .staff-card ul { margin: 0.5rem 0 0 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container"><span>Mitarbeiter-Bereich – Allround Service Stielke</span></div>
+  </div>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo">
+        <span class="logo-text">Team<br><strong>Stielke</strong></span>
+      </a>
+      <a href="index.html" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Zur Website</a>
+    </div>
+  </header>
+
+  <div id="staffLoginView" class="auth-wrap booking-box">
+    <h2>Mitarbeiter-Login</h2>
+    <p class="booking-intro">Interner Bereich für das Team.</p>
+    <form id="staffLoginForm" class="booking-form">
+      <div class="form-group">
+        <label for="staffPass">Team-Passwort</label>
+        <input type="password" id="staffPass" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Anmelden</button>
+      <p id="staffLoginError" class="login-error hidden">Falsches Passwort.</p>
+    </form>
+  </div>
+
+  <div id="staffView" class="staff-wrap hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+      <h2>Willkommen im Team-Bereich</h2>
+      <button type="button" id="staffLogout" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Abmelden</button>
+    </div>
+
+    <div class="staff-card">
+      <h3>Wichtige Kontakte</h3>
+      <ul>
+        <li>Büro / Disposition: <a href="tel:+49155674711603">0155 6747 11603</a></li>
+        <li>WhatsApp: <a href="https://wa.me/491742988851">0174 2988851</a></li>
+        <li>E-Mail: <a href="mailto:allroundservicestielke@web.de">allroundservicestielke@web.de</a></li>
+      </ul>
+    </div>
+
+    <div class="staff-card">
+      <h3>Standorte</h3>
+      <ul>
+        <li><strong>Hauptsitz:</strong> John-Schehr-Straße 19, 06526 Sangerhausen</li>
+        <li><strong>Zweitstandort:</strong> Naundorfer Weg 4, 06198 Salzatal</li>
+      </ul>
+    </div>
+
+    <div class="staff-card">
+      <h3>Arbeits-Hinweise</h3>
+      <ul>
+        <li>Pünktlich am Objekt erscheinen, bei Verzögerung Chef informieren</li>
+        <li>Arbeitsmaterial prüfen, Schäden melden</li>
+        <li>Kundendaten vertraulich behandeln (DSGVO)</li>
+        <li>Nach Abschluss kurz Rückmeldung an die Disposition</li>
+      </ul>
+    </div>
+
+    <div class="staff-card">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="index.html">Öffentliche Website</a></li>
+        <li><a href="admin.html">Admin (nur Leitung)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="auth-config.js"></script>
+  <script>
+    (function () {
+      const KEY = 'stielke_staff_ok';
+      const loginView = document.getElementById('staffLoginView');
+      const staffView = document.getElementById('staffView');
+      const form = document.getElementById('staffLoginForm');
+      const err = document.getElementById('staffLoginError');
+      const cfg = window.STIELKE_AUTH || { staffPassword: 'Team2026!' };
+
+      function show(ok) {
+        if (ok) {
+          loginView.classList.add('hidden');
+          staffView.classList.remove('hidden');
+        } else {
+          staffView.classList.add('hidden');
+          loginView.classList.remove('hidden');
+        }
+      }
+      show(sessionStorage.getItem(KEY) === '1');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const pw = document.getElementById('staffPass').value;
+        if (pw === cfg.staffPassword) {
+          sessionStorage.setItem(KEY, '1');
+          err.classList.add('hidden');
+          show(true);
+        } else {
+          err.classList.remove('hidden');
+        }
+      });
+      document.getElementById('staffLogout').addEventListener('click', function () {
+        sessionStorage.removeItem(KEY);
+        show(false);
+      });
+    })();
+  </script>
+</body>
+</html>
