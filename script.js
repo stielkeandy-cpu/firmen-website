@@ -707,3 +707,15 @@ if (bookingForm) {
     });
   });
 })();
+
+
+// Header-Chat-Button
+(function () {
+  const headerBtn = document.getElementById('chatToggleHeader');
+  const toggle = document.getElementById('chatToggle');
+  if (headerBtn && toggle) {
+    headerBtn.addEventListener('click', function () {
+      toggle.click();
+    });
+  }
+})();
