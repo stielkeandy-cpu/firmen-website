@@ -1,0 +1,58 @@
+========================================
+  FORMULAR → E-MAIL AN DICH
+  Allround Service Stielke
+========================================
+
+Damit du bei jeder Formular-Anfrage eine E-Mail bekommst:
+
+1. Gehe auf https://formspree.io
+2. Kostenloses Konto erstellen (am besten mit:
+   allroundservicestielke@web.de)
+3. „New Form“ / Neues Formular anlegen
+4. Als Empfänger deine E-Mail eintragen
+5. Die Form-ID kopieren (z. B. xabcdefgh)
+6. In der Datei index.html suchen:
+
+     action="https://formspree.io/f/xgaeagza"
+
+   und ersetzen durch z. B.:
+
+     action="https://formspree.io/f/xabcdefgh"
+
+7. Datei speichern und auf den Server hochladen
+
+Fertig.
+- Jede Anfrage kommt als E-Mail an dich
+- Der Kunde sieht auf der Seite „Vielen Dank“
+- Optional: in Formspree eine Auto-Antwort an den Kunden einstellen
+
+OHNE Formspree (Fallback):
+Das Formular öffnet das E-Mail-Programm des Kunden
+mit vorausgefüllter Nachricht an dich. Funktioniert,
+ist aber unzuverlässiger (manche Handys blockieren das).
+
+
+WhatsApp: 0174 2988851
+Telefon:  0155 6747 11603
+E-Mail:   allroundservicestielke@web.de
+
+========================================
+
+========================================
+  BEWERTUNGEN & LOGIN
+========================================
+
+Admin:        admin.html     Passwort in auth-config.js (adminPassword)
+Mitarbeiter:  mitarbeiter.html  Passwort in auth-config.js (staffPassword)
+
+Standard (bitte ändern!):
+  Admin: Admin2026!
+  Team:  Team2026!
+
+Ablauf Bewertung:
+1. Kunde sendet Formular → E-Mail an dich (Formspree) + ggf. "ausstehend" im Browser
+2. Du öffnest admin.html, meldest dich an, gibst frei (oder lehnst ab)
+3. Für alle Besucher: freigegebene Liste als reviews.json speichern und hochladen
+   (Button "JSON kopieren" im Admin)
+
+WICHTIG: Passwörter stehen in auth-config.js und sind im Quelltext lesbar.

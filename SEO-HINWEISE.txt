@@ -1,0 +1,37 @@
+SEO – Kurz-Anleitung Allround Service Stielke
+============================================
+
+1. Domain eintragen
+   Ersetzen Sie in ALLEN Dateien:
+     https://www.allround-service-stielke.com
+   durch Ihre echte Domain, z. B.:
+     https://www.allroundservicestielke.de
+
+   Betroffen: index.html (canonical, og:url, og:image, JSON-LD),
+              impressum.html, datenschutz.html, robots.txt, sitemap.xml
+
+2. Nach dem Online-Gang
+   - Google Search Console: Property anlegen, sitemap.xml einreichen
+   - Bing Webmaster Tools optional
+   - Google Unternehmensprofil (Maps) mit gleicher Adresse pflegen
+
+3. Inhalte
+   - Title und Description sind auf Reinigung Sangerhausen/Salzatal optimiert
+   - Strukturierte Daten (CleaningService) helfen in der Suche
+   - Impressum/Datenschutz: noindex (weniger wichtig für Rankings)
+
+4. Optional später
+   - Eigene Fotos mit aussagekräftigen Dateinamen und alt-Texten
+   - Blog/Tipps-Seiten zu Reinigung (mehr Keywords)
+   - Backlinks (z. B. lokale Verzeichnisse)
+
+MAXIMALE KEYWORD-ABDECKUNG (Stand SEO-Update)
+--------------------------------------------
+Meta Keywords & Texte decken u. a. ab:
+Gebäudereinigung, Unterhaltsreinigung, Haushaltsreinigung, Büro-/Praxisreinigung,
+Fenster-/Glasreinigung, Treppenhaus, Grund-/End-/Umzugs-/Bauabschlussreinigung,
+Industrie/Halle, Hausmeister, Winterdienst, Garten, Polster, Solar, Entrümpelung,
+Sangerhausen, Salzatal, Sachsen-Anhalt, Halle Umgebung.
+
+Zusätzlich: JSON-LD CleaningService + OfferCatalog + FAQPage + WebSite.
+Nach Deploy: Search Console → URL prüfen, Sitemap erneut senden.
