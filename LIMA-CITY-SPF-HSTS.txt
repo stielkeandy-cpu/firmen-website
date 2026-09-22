@@ -1,0 +1,93 @@
+========================================
+  SPF + HSTS bei lima-city
+  Domain: allround-service-stielke.com
+========================================
+
+A) HTTPS bei lima-city einschalten
+---------------------------------
+1. Einloggen: https://www.lima-city.de (Kundenverwaltung)
+2. "Websites & Domains" öffnen
+3. Bei deiner Domain auf das SCHLOSS-Symbol klicken
+   → HTTPS wird erzwungen (Force-SSL)
+4. Warten (wenige Minuten), Browser-Cache leeren
+5. Prüfen: https://www.allround-service-stielke.com öffnen (Schloss sichtbar)
+
+SSL (Let's Encrypt) stellt lima-city in der Regel automatisch aus.
+
+
+B) HSTS per .htaccess (mit hochladen)
+------------------------------------
+Datei ".htaccess" liegt im Website-ZIP (Root neben index.html).
+
+1. Alle Dateien inkl. .htaccess per FTP/Filemanager
+   in das Web-Root der Domain laden
+2. Seite per HTTPS aufrufen
+3. Prüfen: https://securityheaders.com
+   → Strict-Transport-Security sollte erscheinen
+
+Inhalt (bereits vorbereitet):
+- HTTP → HTTPS Weiterleitung
+- Header Strict-Transport-Security (1 Jahr, inkl. Subdomains)
+- weitere Schutz-Header
+
+Falls .htaccess nicht greift: Support lima-city fragen,
+ob mod_headers und mod_rewrite aktiv sind.
+
+
+C) SPF per DNS bei lima-city
+----------------------------
+1. Kundenverwaltung → Domain allround-service-stielke.com
+2. DNS-Einstellungen / DNS-Einträge öffnen
+3. Neuen Eintrag anlegen:
+
+   TYP:    TXT   (nicht "SPF" – veraltet)
+   NAME:   @     (oder die Domain ohne www, z. B. allround-service-stielke.com)
+   INHALT: siehe unten
+   TTL:    3600 (oder Standard)
+
+Variante 1 – Domain sendet KEINE eigene Mail
+(Schutz, wenn nur web.de genutzt wird):
+   v=spf1 -all
+
+Variante 2 – Mail über lima-city (Postfach / PHP-mail):
+   v=spf1 include:_all-out.lima-city.de ~all
+
+   (offiziell von lima-city empfohlen)
+
+Variante 3 – nur Webspace-PHP-Mail:
+   v=spf1 include:_webspace-out.lima-city.de ~all
+
+Variante 4 – nur lima-city Mailserver:
+   v=spf1 include:_mail-out.lima-city.de ~all
+
+Wichtig: Nur EINEN SPF-TXT-Eintrag pro Domain.
+Bestehenden v=spf1-Eintrag anpassen, nicht doppelt anlegen.
+
+4. Speichern, 15 Min. bis einige Stunden warten
+5. Prüfen: https://mxtoolbox.com/spf.aspx
+   Domain eingeben → SPF Record Lookup
+
+
+D) Optional: DMARC
+------------------
+TYP:  TXT
+NAME: _dmarc
+INHALT:
+  v=DMARC1; p=none; rua=mailto:allroundservicestielke@web.de
+
+Später härter: p=quarantine
+
+
+E) Reihenfolge
+--------------
+1. HTTPS/Schloss bei lima-city aktiv
+2. .htaccess hochladen (HSTS)
+3. SPF-TXT setzen
+4. securityheaders.com + mxtoolbox prüfen
+
+Hinweis zu Cloudflare:
+Wenn Cloudflare vor lima-city liegt, HSTS dort unter
+SSL/TLS → Edge Certificates setzen und "Always Use HTTPS"
+laut lima-city-Hilfe ggf. abschalten, sonst Let's-Encrypt-Probleme.
+
+========================================

@@ -1,0 +1,88 @@
+========================================
+  SPF + HSTS – Allround Service Stielke
+  Domain: allround-service-stielke.com
+========================================
+
+1) HSTS (Website – HTTPS erzwingen)
+-----------------------------------
+HSTS ist ein HTTP-Header, kein DNS-Eintrag.
+
+Bereits eingebaut:
+- Node-Backend (server.js): Header Strict-Transport-Security
+- Statisch / Cloudflare Pages: Datei _headers
+
+Voraussetzung: Seite läuft unter HTTPS.
+
+Cloudflare (falls Domain dort liegt):
+  SSL/TLS → Edge Certificates → HTTP Strict Transport Security (HSTS)
+  → Enable HSTS
+  → max-age: 12 months (oder 6 months zum Start)
+  → Include subdomains: optional Ja
+  → Preload: erst aktivieren, wenn HTTPS überall stabil läuft
+
+GitHub Pages: HSTS kommt von GitHub selbst bei *.github.io;
+  Custom Domain: HTTPS in Repo-Settings aktivieren, HSTS begrenzt steuerbar.
+  Besser: Cloudflare vor die Domain legen und HSTS dort setzen.
+
+Test nach Go-Live:
+  https://securityheaders.com/?q=https://www.allround-service-stielke.com
+  oder Browser-DevTools → Network → Response Headers
+
+
+2) SPF (E-Mail – Absender schützen)
+-----------------------------------
+SPF ist ein DNS-TXT-Eintrag auf der Domain, die in der Absender-Adresse
+steht. Deine Kunden-Mail ist derzeit web.de:
+
+  allroundservicestielke@web.de
+
+Wichtig:
+- SPF von web.de steuert web.de – das kannst du nicht auf allround-service-stielke.com „ersetzen“.
+- SPF auf allround-service-stielke.com brauchst du, wenn du E-Mails
+  als z. B. info@allround-service-stielke.com versendest.
+
+Wenn die Domain NUR Website ist und Mail weiter über web.de geht:
+  → optional SPF „keine Mail von dieser Domain“ (abschotten):
+
+Typ:  TXT
+Name: @   (oder leer / Root)
+Wert: v=spf1 -all
+
+Bedeutung: Diese Domain versendet absichtlich keine E-Mail.
+  Verhindert, dass andere deine Domain als Absender missbrauchen.
+
+
+Wenn du später Postfach unter der Domain nutzt (z. B. bei Hoster):
+
+Beispiel nur Hoster-SMTP (Platzhalter anpassen):
+  v=spf1 include:spf.deines-hosters.de -all
+
+Beispiel Google Workspace:
+  v=spf1 include:_spf.google.com -all
+
+Beispiel Microsoft 365:
+  v=spf1 include:spf.protection.outlook.com -all
+
+web.de selbst: SPF liegt bei web.de; für @web.de nichts an deiner Domain ändern.
+
+
+Empfohlen zusätzlich (wenn eigene Domain-Mail):
+- DKIM: beim Mail-Anbieter aktivieren, TXT-Eintrag setzen
+- DMARC: TXT auf _dmarc
+
+Beispiel DMARC (zuerst beobachten):
+  Name: _dmarc
+  Wert: v=DMARC1; p=none; rua=mailto:allroundservicestielke@web.de
+
+Später härter: p=quarantine oder p=reject
+
+
+3) Kurz-Checkliste
+------------------
+[ ] HTTPS aktiv (Schloss im Browser)
+[ ] HSTS Header oder Cloudflare HSTS an
+[ ] SPF TXT auf @ gesetzt (entweder -all oder include deines Mail-Anbieters)
+[ ] Optional DMARC
+[ ] securityheaders.com prüfen
+
+========================================
