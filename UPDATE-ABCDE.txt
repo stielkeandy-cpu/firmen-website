@@ -1,0 +1,16 @@
+Update A–E (Paket)
+==================
+A Design/Header: Logo/Menü/Icons ohne Überlappung, Desktop-Nav ab 1101px
+B SEO-Unterseiten:
+   - reinigung-sangerhausen.html
+   - reinigung-salzatal.html
+   - fensterputzen.html
+   - treppenhausreinigung.html
+   - hausmeisterservice.html
+   sitemap.xml erweitert
+C Anfragen: Formulare → Formspree https (E-Mail an dich), Bestätigungstext klarer
+D Tarife: Intro-Text 2026, Links zum Kalkulator
+E Security: CSP/XSS/HSTS (.htaccess + Meta) aus vorherigem Stand beibehalten
+
+Nach Upload: Search Console → Sitemap erneut senden
+https://www.allround-service-stielke.com/sitemap.xml
