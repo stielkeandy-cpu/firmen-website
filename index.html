@@ -2,7 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-src https://maps.google.com https://www.google.com; connect-src 'self' https://formspree.io">
+  <meta name="trustmarkt-verification" content="659dec85" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; script-src 'self' 'unsafe-inline' https://*.trustmarkt.de https://trustmarkt.de; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-src https://maps.google.com https://www.google.com https://*.trustmarkt.de https://trustmarkt.de; connect-src 'self' https://formspree.io https://*.trustmarkt.de https://trustmarkt.de">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -14,9 +15,9 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
   <meta name="geo.region" content="DE-ST">
-  <meta name="geo.placename" content="Sangerhausen, Salzatal, Sachsen-Anhalt">
-  <meta name="geo.position" content="51.4722;11.2953">
-  <meta name="ICBM" content="51.4722, 11.2953">
+  <meta name="geo.placename" content="Salzatal OT Gorsleben, Sachsen-Anhalt">
+  <meta name="geo.position" content="51.5700;11.7800">
+  <meta name="ICBM" content="51.5700, 11.7800">
   <meta name="language" content="German">
   <meta name="revisit-after" content="7 days">
   <meta name="theme-color" content="#0f3d5c">
@@ -35,6 +36,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="logo.png" type="image/png">
   <link rel="apple-touch-icon" href="logo.png">
+  <link rel="manifest" href="manifest.json">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,16 +54,16 @@
     "paymentAccepted": "Cash, Bank Transfer, Invoice",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "John-Schehr-Straße 19",
-      "addressLocality": "Sangerhausen",
-      "postalCode": "06526",
+      "streetAddress": "Naundorfer Weg 4",
+      "addressLocality": "Salzatal OT Gorsleben",
+      "postalCode": "06198",
       "addressRegion": "Sachsen-Anhalt",
       "addressCountry": "DE"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 51.4722,
-      "longitude": 11.2953
+      "latitude": 51.5700,
+      "longitude": 11.7800
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -145,7 +147,7 @@
         "name": "In welchen Gebieten sind Sie tätig?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Hauptsitz Sangerhausen, Zweitstandort Salzatal, Einsatz in der Region Sachsen-Anhalt / Halle und Umgebung. Im Umkreis von 25 km keine Anfahrtskosten."
+          "text": "Standort: Naundorfer Weg 4, 06198 Salzatal OT Gorsleben. Einsatz in der Region Sachsen-Anhalt / Halle und Umgebung. Im Umkreis von 25 km keine Anfahrtskosten."
         }
       },
       {
@@ -159,12 +161,65 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Offene Stellen Allround Service Stielke",
+    "itemListElement": [
+      {
+        "@type": "JobPosting",
+        "title": "Reinigungskraft (m/w/d) – Unterhalt",
+        "description": "Unterhalts- und Haushaltsreinigung in Salzatal OT Gorsleben und Umgebung.",
+        "datePosted": "2026-09-01",
+        "employmentType": ["PART_TIME", "FULL_TIME"],
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "Allround Service Stielke",
+          "sameAs": "https://www.allround-service-stielke.com/"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Naundorfer Weg 4",
+            "addressLocality": "Salzatal OT Gorsleben",
+            "postalCode": "06198",
+            "addressCountry": "DE"
+          }
+        }
+      },
+      {
+        "@type": "JobPosting",
+        "title": "Aushilfe Reinigung (m/w/d)",
+        "description": "Flexible Einsätze als Reinigungsaushilfe in der Region.",
+        "datePosted": "2026-09-01",
+        "employmentType": "PART_TIME",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "Allround Service Stielke"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Salzatal OT Gorsleben",
+            "postalCode": "06198",
+            "addressCountry": "DE"
+          }
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="container top-bar-inner">
-      <span class="top-bar-tagline">Allround Service Stielke · Sangerhausen &amp; Salzatal</span>
+      <span class="top-bar-tagline">Allround Service Stielke · Salzatal OT Gorsleben</span>
       <div class="top-bar-actions">
         <a href="tel:+491742988851" class="top-action" title="Anrufen">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -209,6 +264,7 @@
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="#team" class="nav-link">Team</a>
         <a href="#stimmen" class="nav-link">Bewertungen</a>
+        <a href="#aktuelles" class="nav-link">Aktuelles</a>
         <a href="#stellenboerse" class="nav-link">Stellenbörse</a>
         <a href="#kontakt" class="nav-link">Kontakt</a>
       </nav>
@@ -230,6 +286,7 @@
     </div>
   </header>
 
+  <main id="main-content">
   <!-- Hero -->
   <section class="hero">
     <div class="hero-overlay"></div>
@@ -800,8 +857,28 @@
       <div class="section-header">
         <h2>Kundenbewertungen</h2>
         <div class="divider"></div>
-        <p class="section-intro">Echte Rückmeldungen – freigegebene Bewertungen erscheinen hier.</p>
+        <p class="section-intro">Echte Rückmeldungen über Trustmarkt und unsere Website – freigegebene Stimmen erscheinen hier.</p>
       </div>
+
+      <!-- Trustmarkt Bewertungen -->
+      <div class="trustmarkt-box" id="trustmarkt">
+        <div class="trustmarkt-inner">
+          <div class="trustmarkt-badge-row">
+            <span class="trustmarkt-logo-text">Trustmarkt</span>
+            <span class="job-badge job-badge-open">Verifiziert</span>
+          </div>
+          <h3>Bewertung auf Trustmarkt hinterlassen</h3>
+          <p>Ihre Meinung hilft anderen Kunden und uns, noch besser zu werden. Bewerten Sie Allround Service Stielke bequem über Trustmarkt – auch per Sprachnachricht möglich.</p>
+          <div class="trustmarkt-actions">
+            <a href="https://www.trustmarkt.de/" class="btn btn-primary" id="trustmarktReviewLink" target="_blank" rel="noopener">Jetzt auf Trustmarkt bewerten</a>
+            <a href="#reviewFormBox" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Kurz hier auf der Website bewerten</a>
+          </div>
+          <p class="form-note" style="margin-top:0.75rem;">Den genauen Bewertungs-Link zu Ihrem Firmenprofil finden Sie in Ihrem Trustmarkt-Dashboard unter „Bewertungen sammeln“ / Einladungslink. Tragen Sie ihn in <code>trustmarkt-config.js</code> ein.</p>
+          <!-- Widget-Platzhalter: Code aus Trustmarkt-Dashboard hier einfügen -->
+          <div id="trustmarktWidget" class="trustmarkt-widget" aria-live="polite"></div>
+        </div>
+      </div>
+
       <div class="testimonials-grid" id="reviewsGrid">
         <p class="form-note">Bewertungen werden geladen …</p>
       </div>
@@ -901,7 +978,7 @@
       <div class="gebiet-box">
         <ul class="gebiet-list">
           <li>Sangerhausen (Hauptsitz)</li>
-          <li>Salzatal (Zweitstandort)</li>
+          <li>Salzatal (Standort)</li>
           <li>Region Halle / Sachsen-Anhalt</li>
         </ul>
         <p>Sie sind unsicher, ob wir bei Ihnen im Einsatz sind? Schreiben oder rufen Sie uns an – wir sagen Ihnen sofort Bescheid.</p>
@@ -914,6 +991,38 @@
     </div>
   </section>
 
+
+
+  <!-- Aktuelles -->
+  <section id="aktuelles" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Aktuelles</h2>
+        <div class="divider"></div>
+        <p class="section-intro">Neuigkeiten von Allround Service Stielke</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <time datetime="2026-09">September 2026</time>
+          <h3>Stellenbörse online</h3>
+          <p>Offene Stellen für Reinigungskräfte, Aushilfen und Hausmeister – bewerben Sie sich direkt über die Website.</p>
+          <a href="#stellenboerse">Zur Stellenbörse →</a>
+        </article>
+        <article class="news-card">
+          <time datetime="2026-09">2026</time>
+          <h3>Online-Kalkulator</h3>
+          <p>Preis unverbindlich schätzen und Anfrage in wenigen Minuten absenden – inkl. optionaler Rabattcodes.</p>
+          <a href="#kalkulator">Jetzt kalkulieren →</a>
+        </article>
+        <article class="news-card">
+          <time datetime="2026">Standort</time>
+          <h3>Salzatal OT Gorsleben</h3>
+          <p>Unser Standort: Naundorfer Weg 4, 06198 Salzatal OT Gorsleben. Einsatz in der Region, 25&nbsp;km oft ohne Anfahrt.</p>
+          <a href="#kontakt">Kontakt &amp; Anfahrt →</a>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- Stellenbörse -->
   <section id="stellenboerse" class="section section-alt">
@@ -1140,7 +1249,7 @@
         <p class="section-intro">Allround Service Stielke ist Ihr regionaler Partner für professionelle Reinigung und Objektbetreuung in Sachsen-Anhalt.</p>
       </div>
       <div class="seo-text" style="max-width:900px;margin:0 auto;line-height:1.65;color:var(--text);">
-        <p>Als <strong>Reinigungsfirma in Sangerhausen</strong> und mit Standort in <strong>Salzatal</strong> übernehmen wir <strong>Gebäudereinigung</strong>, <strong>Unterhaltsreinigung</strong> und <strong>Haushaltsreinigung</strong> für Privat und Gewerbe. Dazu gehören <strong>Büroreinigung</strong>, <strong>Praxisreinigung</strong>, <strong>Fensterputzen</strong> und <strong>Glasreinigung</strong>, <strong>Treppenhausreinigung</strong>, <strong>Grundreinigung</strong>, <strong>Endreinigung</strong> nach Umzug sowie <strong>Bauabschlussreinigung</strong>.</p>
+        <p>Als <strong>Reinigungsfirma in Salzatal OT Gorsleben</strong> (Region Sangerhausen &amp; Umgebung) übernehmen wir <strong>Gebäudereinigung</strong>, <strong>Unterhaltsreinigung</strong> und <strong>Haushaltsreinigung</strong> für Privat und Gewerbe. Dazu gehören <strong>Büroreinigung</strong>, <strong>Praxisreinigung</strong>, <strong>Fensterputzen</strong> und <strong>Glasreinigung</strong>, <strong>Treppenhausreinigung</strong>, <strong>Grundreinigung</strong>, <strong>Endreinigung</strong> nach Umzug sowie <strong>Bauabschlussreinigung</strong>.</p>
         <p>Ergänzend bieten wir <strong>Hausmeisterservice</strong>, <strong>Winterdienst</strong>, <strong>Gartenpflege</strong>, <strong>Polster- und Sofareinigung</strong>, <strong>Solar- und Photovoltaikreinigung</strong> sowie <strong>Entrümpelung</strong>. Ob <strong>Industriereinigung</strong>, <strong>Hallenreinigung</strong> oder hygienische <strong>Sanitärreinigung</strong> – wir arbeiten mit klaren Staffelpreisen und einem <a href="#kalkulator">Online-Kalkulator</a>.</p>
         <p>Suchen Sie eine zuverlässige <strong>Reinigungshilfe</strong> oder <strong>Gebäudereinigung in der Region Halle / Mansfeld-Südharz</strong>? Anfrage über Formular, Telefon oder WhatsApp – Angebot in der Regel innerhalb von 24 Stunden. Im Umkreis von 25 km oft ohne Anfahrtskosten.</p>
         <p style="margin-top:1rem;"><p style="margin-bottom:1rem;">Mehr Infos:
@@ -1170,13 +1279,9 @@
         <div class="contact-info">
           <h3>Allround Service Stielke</h3>
           <p class="address">
-            <strong>Hauptsitz</strong><br>
-            John-Schehr-Straße 19<br>
-            06526 Sangerhausen<br>
-            <br>
-            <strong>Zweitstandort</strong><br>
+            <strong>Standort</strong><br>
             Naundorfer Weg 4<br>
-            06198 Salzatal<br>
+            06198 Salzatal OT Gorsleben<br>
             Sachsen-Anhalt
           </p>
           <div class="contact-item">
@@ -1260,18 +1365,18 @@
         <h3 class="map-title">So finden Sie uns</h3>
         <div class="map-container">
           <iframe
-            src="https://maps.google.com/maps?q=John-Schehr-Stra%C3%9Fe+19,+06526+Sangerhausen&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=Naundorfer+Weg+4,+06198+Salzatal+OT+Gorsleben&t=&z=15&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="400"
             style="border:0;"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Standort Allround Service Stielke – John-Schehr-Straße 19, 06526 Sangerhausen">
+            title="Standort Allround Service Stielke – Naundorfer Weg 4, 06198 Salzatal OT Gorsleben">
           </iframe>
         </div>
         <p class="map-link">
-          <a href="https://maps.google.com/maps?q=John-Schehr-Stra%C3%9Fe+19,+06526+Sangerhausen" target="_blank" rel="noopener">
+          <a href="https://maps.google.com/maps?q=Naundorfer+Weg+4,+06198+Salzatal+OT+Gorsleben" target="_blank" rel="noopener">
             In Google Maps öffnen →
           </a>
         </p>
@@ -1279,13 +1384,15 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="logo.png" alt="Allround Service Stielke" class="footer-logo">
-          <p>Allround Service Stielke<br>John-Schehr-Straße 19, 06526 Sangerhausen<br>Zweitstandort: Naundorfer Weg 4, 06198 Salzatal</p>
+          <p>Allround Service Stielke<br>Naundorfer Weg 4<br>06198 Salzatal OT Gorsleben</p>
         </div>
         <div class="footer-links">
           <h4>Navigation</h4>
@@ -1293,6 +1400,10 @@
           <a href="#leistungen">Leistungen</a>
           <a href="#tarife">Tarife</a>
           <a href="#kalkulator">Kalkulator</a>
+          <a href="#stellenboerse">Stellenbörse</a>
+          <a href="reinigung-sangerhausen.html">Reinigung Sangerhausen</a>
+          <a href="reinigung-salzatal.html">Reinigung Salzatal</a>
+          <a href="fensterputzen.html">Fensterputzen</a>
           <a href="#ablauf">Ablauf</a>
           <a href="#faq">FAQ</a>
           <a href="#team">Unser Team</a>
@@ -1347,6 +1458,15 @@
     </div>
   </div>
 
+
+  <!-- Mobile Schnellkontakt -->
+  <div class="mobile-cta-bar" role="navigation" aria-label="Schnellkontakt">
+    <a href="tel:+491742988851" class="mobile-cta-item">📞 Anrufen</a>
+    <a href="https://wa.me/491742988851?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Reinigung." class="mobile-cta-item mobile-cta-wa" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="#kalkulator" class="mobile-cta-item">Kalkulator</a>
+    <a href="#buchung" class="mobile-cta-item mobile-cta-primary">Anfrage</a>
+  </div>
+
   <!-- Cookie / Datenschutz Hinweis -->
   <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Datenschutz-Hinweis" style="display:none;">
     <div class="cookie-inner">
@@ -1359,6 +1479,8 @@
   </div>
 
   <script src="auth-config.js"></script>
+  <script src="trustmarkt-config.js"></script>
+  <script src="trustmarkt.js"></script>
   <script src="reviews-public.js"></script>
   <script src="script.js"></script>
 </body>

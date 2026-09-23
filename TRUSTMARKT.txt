@@ -1,0 +1,14 @@
+Trustmarkt – Einbindung
+======================
+Meta-Verifizierung (bereits im <head> aller Seiten):
+  <meta name="trustmarkt-verification" content="659dec85" />
+
+Bewertungen sammeln:
+1. Trustmarkt-Dashboard → Bewertungen / Einladungslink
+2. Link in trustmarkt-config.js bei reviewUrl eintragen
+3. Optional: Widget-Code unter „Widget einbetten“ kopieren
+   und in trustmarkt-config.js bei widgetHtml einfügen
+   (als Zeichenkette in Anführungszeichen)
+
+Website-Bereich: #stimmen / #trustmarkt
+Zusätzlich bleibt das eigene Bewertungsformular (Formspree).

@@ -1,0 +1,24 @@
+{
+  "name": "Allround Service Stielke",
+  "short_name": "Stielke Reinigung",
+  "description": "Reinigung in Salzatal OT Gorsleben und Umgebung – Tarife, Kalkulator, Anfrage",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#061a2e",
+  "theme_color": "#0a2540",
+  "lang": "de-DE",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

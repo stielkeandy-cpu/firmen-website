@@ -618,7 +618,7 @@ if (bookingForm) {
     },
     {
       keys: ['kontakt', 'telefon', 'anruf', 'mail', 'whatsapp', 'nummer', 'email'],
-      text: 'Telefon: 0174 2988851 · WhatsApp: 0174 2988851 · E-Mail: allroundservicestielke@web.de · Adresse: John-Schehr-Straße 19, 06526 Sangerhausen · Zweitstandort: Naundorfer Weg 4, 06198 Salzatal.'
+      text: 'Telefon: 0174 2988851 · WhatsApp: 0174 2988851 · E-Mail: allroundservicestielke@web.de · Adresse: Naundorfer Weg 4, 06198 Salzatal OT Gorsleben.'
     },
     {
       keys: ['fenster', 'glas'],
