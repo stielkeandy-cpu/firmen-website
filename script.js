@@ -719,3 +719,41 @@ if (bookingForm) {
     });
   }
 })();
+
+
+// Stellenbörse → Bewerbungsformular
+(function () {
+  document.querySelectorAll('.job-apply').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var job = btn.getAttribute('data-job') || '';
+      var sel = document.getElementById('a-job');
+      var formSection = document.getElementById('bewerbung');
+      if (sel) {
+        var found = false;
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value === job || sel.options[i].text.indexOf(job.split('–')[0].trim()) !== -1) {
+            sel.selectedIndex = i;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          // try exact or partial
+          for (var j = 0; j < sel.options.length; j++) {
+            if (job.indexOf(sel.options[j].value) !== -1 || sel.options[j].value.indexOf(job.substring(0, 12)) !== -1) {
+              sel.selectedIndex = j;
+              break;
+            }
+          }
+        }
+        // force set value if option exists
+        try { sel.value = job; } catch (e) {}
+      }
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      var name = document.getElementById('a-name');
+      if (name) setTimeout(function () { name.focus(); }, 400);
+    });
+  });
+})();

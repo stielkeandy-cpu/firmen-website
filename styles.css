@@ -1916,3 +1916,75 @@ ul { list-style: none; }
   }
 }
 .seo-subpage-list a { text-decoration: underline; }
+
+
+/* Stellenbörse */
+.jobs-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+.job-card {
+  background: var(--bg, #fff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: var(--radius, 10px);
+  padding: 1.35rem 1.25rem;
+  box-shadow: var(--shadow, 0 4px 20px rgba(10,37,64,0.08));
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(10,37,64,0.12);
+}
+.job-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.job-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: var(--bg-alt, #f1f5f9);
+  color: var(--text-light, #64748b);
+}
+.job-badge-open {
+  background: #dcfce7;
+  color: #166534;
+}
+.job-type {
+  font-size: 0.8rem;
+  color: var(--text-light, #64748b);
+}
+.job-card h3 {
+  font-size: 1.1rem;
+  color: var(--primary, #0a2540);
+  margin: 0;
+  line-height: 1.3;
+}
+.job-meta {
+  font-size: 0.88rem;
+  color: var(--accent, #1a6b9a);
+  margin: 0;
+  font-weight: 500;
+}
+.job-list {
+  margin: 0.25rem 0 0.5rem 1.1rem;
+  font-size: 0.9rem;
+  color: var(--text, #1e293b);
+  line-height: 1.55;
+  flex: 1;
+}
+.job-card .btn { align-self: flex-start; margin-top: auto; }
+@media (max-width: 600px) {
+  .jobs-board { grid-template-columns: 1fr; }
+}
