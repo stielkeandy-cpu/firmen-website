@@ -90,10 +90,10 @@ if (bookingForm) {
           if (bookingSuccess) bookingSuccess.style.display = 'block';
           bookingForm.reset();
         } else {
-          alert('Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0155 6747 11603');
+          alert('Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0174 2988851');
         }
       } catch (err) {
-        alert('Verbindungsfehler. Bitte rufen Sie uns an: 0155 6747 11603');
+        alert('Verbindungsfehler. Bitte rufen Sie uns an: 0174 2988851');
       }
     } else {
       // Fallback: mailto öffnen (wenn Formspree noch nicht eingerichtet)
@@ -618,7 +618,7 @@ if (bookingForm) {
     },
     {
       keys: ['kontakt', 'telefon', 'anruf', 'mail', 'whatsapp', 'nummer', 'email'],
-      text: 'Telefon: 0155 6747 11603 · WhatsApp: 0174 2988851 · E-Mail: allroundservicestielke@web.de · Adresse: John-Schehr-Straße 19, 06526 Sangerhausen · Zweitstandort: Naundorfer Weg 4, 06198 Salzatal.'
+      text: 'Telefon: 0174 2988851 · WhatsApp: 0174 2988851 · E-Mail: allroundservicestielke@web.de · Adresse: John-Schehr-Straße 19, 06526 Sangerhausen · Zweitstandort: Naundorfer Weg 4, 06198 Salzatal.'
     },
     {
       keys: ['fenster', 'glas'],
@@ -657,7 +657,7 @@ if (bookingForm) {
         return replies[i].text;
       }
     }
-    return 'Dazu habe ich keine fertige Antwort. Schreiben Sie uns direkt per <a href="' + WA + encodeURIComponent('Hallo, ich habe eine Frage: ' + q) + '" target="_blank" rel="noopener">WhatsApp</a>, rufen Sie <a href="tel:+49155674711603">0155 6747 11603</a> an oder nutzen Sie das <a href="#buchung">Anfrageformular</a>.';
+    return 'Dazu habe ich keine fertige Antwort. Schreiben Sie uns direkt per <a href="' + WA + encodeURIComponent('Hallo, ich habe eine Frage: ' + q) + '" target="_blank" rel="noopener">WhatsApp</a>, rufen Sie <a href="tel:+491742988851">0174 2988851</a> an oder nutzen Sie das <a href="#buchung">Anfrageformular</a>.';
   }
 
   function openChat() {
