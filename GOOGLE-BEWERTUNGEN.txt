@@ -1,0 +1,17 @@
+Google-Bewertungen
+==================
+1. Google Unternehmensprofil für
+   Allround Service Stielke
+   Naundorfer Weg 4, 06198 Salzatal OT Gorsleben
+   anlegen bzw. beanspruchen.
+
+2. Place ID ermitteln (Place ID Finder von Google)
+   und in google-reviews-config.js eintragen:
+   placeId: 'ChIJ....'
+
+3. Optional mapsUrl anpassen, wenn der Maps-Link eindeutig ist.
+
+Auf der Website (#stimmen):
+- Button „Google Maps / Profil öffnen“
+- Button „Bei Google bewerten“ (mit Place ID direkt zum Formular)
+- Zusätzlich Website-Bewertungsformular (Formspree)

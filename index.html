@@ -2,8 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="trustmarkt-verification" content="659dec85" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; script-src 'self' 'unsafe-inline' https://*.trustmarkt.de https://trustmarkt.de; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-src https://maps.google.com https://www.google.com https://*.trustmarkt.de https://trustmarkt.de; connect-src 'self' https://formspree.io https://*.trustmarkt.de https://trustmarkt.de">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; frame-src https://maps.google.com https://www.google.com; connect-src 'self' https://formspree.io">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -857,25 +856,25 @@
       <div class="section-header">
         <h2>Kundenbewertungen</h2>
         <div class="divider"></div>
-        <p class="section-intro">Echte Rückmeldungen über Trustmarkt und unsere Website – freigegebene Stimmen erscheinen hier.</p>
+        <p class="section-intro">Echte Rückmeldungen – bei Google und freigegebene Stimmen auf dieser Website.</p>
       </div>
 
-      <!-- Trustmarkt Bewertungen -->
-      <div class="trustmarkt-box" id="trustmarkt">
-        <div class="trustmarkt-inner">
-          <div class="trustmarkt-badge-row">
-            <span class="trustmarkt-logo-text">Trustmarkt</span>
-            <span class="job-badge job-badge-open">Verifiziert</span>
+      <!-- Google Bewertungen -->
+      <div class="google-reviews-box" id="google-bewertungen">
+        <div class="google-reviews-inner">
+          <div class="google-reviews-header">
+            <span class="google-g" aria-hidden="true">G</span>
+            <div>
+              <h3>Google-Bewertungen</h3>
+              <p class="google-sub">Lesen Sie Erfahrungen anderer Kunden oder schreiben Sie Ihre Bewertung bei Google.</p>
+            </div>
           </div>
-          <h3>Bewertung auf Trustmarkt hinterlassen</h3>
-          <p>Ihre Meinung hilft anderen Kunden und uns, noch besser zu werden. Bewerten Sie Allround Service Stielke bequem über Trustmarkt – auch per Sprachnachricht möglich.</p>
-          <div class="trustmarkt-actions">
-            <a href="https://www.trustmarkt.de/" class="btn btn-primary" id="trustmarktReviewLink" target="_blank" rel="noopener">Jetzt auf Trustmarkt bewerten</a>
-            <a href="#reviewFormBox" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Kurz hier auf der Website bewerten</a>
+          <div class="google-reviews-actions">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Allround+Service+Stielke+Naundorfer+Weg+4+Salzatal" class="btn btn-primary" id="googleMapsLink" target="_blank" rel="noopener">Google Maps / Profil öffnen</a>
+            <a href="https://search.google.com/local/writereview?placeid=PLACE_ID_HIER" class="btn btn-outline" id="googleReviewLink" style="color:var(--primary);border-color:var(--primary);" target="_blank" rel="noopener">Bei Google bewerten</a>
+            <a href="#reviewFormBox" class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);">Kurz hier bewerten</a>
           </div>
-          <p class="form-note" style="margin-top:0.75rem;">Den genauen Bewertungs-Link zu Ihrem Firmenprofil finden Sie in Ihrem Trustmarkt-Dashboard unter „Bewertungen sammeln“ / Einladungslink. Tragen Sie ihn in <code>trustmarkt-config.js</code> ein.</p>
-          <!-- Widget-Platzhalter: Code aus Trustmarkt-Dashboard hier einfügen -->
-          <div id="trustmarktWidget" class="trustmarkt-widget" aria-live="polite"></div>
+          <p class="form-note" style="margin-top:0.85rem;">Tipp: Place-ID aus dem <a href="https://developers.google.com/maps/documentation/places/web-service/place-id" target="_blank" rel="noopener">Google Place ID Finder</a> holen und in <code>google-reviews-config.js</code> eintragen – dann führt „Bei Google bewerten“ direkt zum Formular.</p>
         </div>
       </div>
 
@@ -1479,8 +1478,6 @@
   </div>
 
   <script src="auth-config.js"></script>
-  <script src="trustmarkt-config.js"></script>
-  <script src="trustmarkt.js"></script>
   <script src="reviews-public.js"></script>
   <script src="script.js"></script>
 </body>
