@@ -1,0 +1,13 @@
+Social Media & Teilen
+=====================
+Facebook (bereits aktiv):
+  https://www.facebook.com/p/Allround-Service-Stielke-61573117905185/
+
+Instagram:
+  URL in social-config.js bei "instagram" eintragen, z. B.:
+  instagram: 'https://www.instagram.com/ihr_account/',
+
+Dann erscheinen die Instagram-Links in Top-Leiste, Teilen-Leiste, Kontakt und Footer.
+
+Teilen-Leiste:
+  Facebook, WhatsApp, LinkedIn, Telegram, E-Mail, Link kopieren

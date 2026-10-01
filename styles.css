@@ -2470,3 +2470,84 @@ input:focus, select:focus, textarea:focus {
   .hero-content { padding: 3.25rem 1.25rem 3rem; }
   .header-inner { min-height: 58px; }
 }
+
+
+/* Emphasis without excessive <strong> */
+.em-price { font-weight: 700; color: var(--primary); }
+.em-label { font-weight: 650; color: var(--primary); }
+.contact-label {
+  display: block;
+  font-weight: 650;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  margin-bottom: 0.15rem;
+}
+.job-point-label {
+  display: block;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+.express-title { font-weight: 700; }
+
+
+/* Social Share & Follow */
+.share-bar {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0;
+}
+.share-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
+}
+.share-label {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.share-buttons, .share-follow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  line-height: 1.3;
+}
+.share-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #f0fdfa;
+}
+.share-fb:hover { border-color: #1877f2; color: #1877f2; background: #eff6ff; }
+.share-wa:hover { border-color: #25d366; color: #128c7e; background: #ecfdf5; }
+.share-ig:hover { border-color: #e1306c; color: #c13584; background: #fdf2f8; }
+.share-li:hover { border-color: #0a66c2; color: #0a66c2; }
+.share-tg:hover { border-color: #229ed9; color: #229ed9; }
+.social-btn.social-ig {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .share-bar-inner { flex-direction: column; align-items: flex-start; }
+}
