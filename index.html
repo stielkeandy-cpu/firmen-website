@@ -38,7 +38,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CleaningService",
+    "@type": ["LocalBusiness", "CleaningService"],
     "@id": "https://www.allround-service-stielke.com/#business",
     "name": "Allround Service Stielke",
     "alternateName": ["Allround Service Stielke Reinigung", "Reinigungsservice Stielke"],
@@ -47,6 +47,13 @@
     "url": "https://www.allround-service-stielke.com/",
     "telephone": "+491742988851",
     "email": "allroundservicestielke@web.de",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+491742988851",
+      "contactType": "customer service",
+      "areaServed": "DE",
+      "availableLanguage": ["de"]
+    },
     "priceRange": "€",
     "currenciesAccepted": "EUR",
     "paymentAccepted": "Cash, Bank Transfer, Invoice",
@@ -63,12 +70,15 @@
       "latitude": 51.5700,
       "longitude": 11.7800
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "08:00",
-      "closes": "18:00"
-    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
+    "openingHours": ["Mo-Sa 08:00-18:00"],
     "areaServed": [
       {"@type": "City", "name": "Sangerhausen"},
       {"@type": "City", "name": "Salzatal"},
