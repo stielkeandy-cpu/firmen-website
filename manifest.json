@@ -1,27 +1,15 @@
 {
   "name": "Allround Service Stielke",
   "short_name": "Stielke",
-  "description": "Reinigung Salzatal – Tarife, Anfrage, Jobs, Kontakt",
-  "start_url": "/app/",
-  "scope": "/app/",
-  "id": "/app/",
-  "display": "standalone",
-  "orientation": "portrait-primary",
+  "description": "Professionelle Reinigung in Salzatal und Umgebung",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
   "background_color": "#0c1e33",
   "theme_color": "#0c1e33",
   "lang": "de-DE",
   "icons": [
-    {
-      "src": "/app/logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/app/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    { "src": "/logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
   ]
 }
