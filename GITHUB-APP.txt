@@ -1,0 +1,35 @@
+GitHub Pages – App-Ordner richtig ablegen
+========================================
+
+Problem: /app/ liefert 404 → Ordner liegt nicht im veröffentlichten Branch
+oder Dateien wurden in die falsche Ebene kopiert.
+
+Struktur im Repository-ROOT (Branch: main oder gh-pages):
+
+  index.html
+  logo.png
+  styles.css
+  ...
+  app/
+    index.html
+    app.css
+    app.js
+    manifest.json
+    logo.png
+    sw.js
+  .nojekyll
+
+WICHTIG:
+1. Ordner heißt genau "app" (klein, nicht App oder APP)
+2. Dateien INNEN in app/, nicht nur app.zip hochladen
+3. Settings → Pages → Branch wählen, auf dem die Dateien liegen
+4. Nach Push 1–5 Minuten warten, dann hart neu laden (Strg+F5)
+
+Prüfen:
+  https://www.allround-service-stielke.com/app/
+  https://www.allround-service-stielke.com/app/manifest.json
+  https://www.allround-service-stielke.com/app/logo.png
+
+Wenn alle drei URLs Inhalt zeigen → PWA Builder:
+  https://www.pwabuilder.com/
+  URL: https://www.allround-service-stielke.com/app/
