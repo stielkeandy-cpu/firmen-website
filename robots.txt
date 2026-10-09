@@ -1,4 +1,8 @@
 User-agent: *
+Disallow: /admin/
+Allow: /
+
+User-agent: *
 Allow: /
 
 Sitemap: https://www.allround-service-stielke.com/sitemap.xml
