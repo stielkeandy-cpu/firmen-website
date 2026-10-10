@@ -3108,3 +3108,84 @@ a.contact-row:hover {
 @media (max-width: 600px) {
   .cert-card { flex-direction: column; }
 }
+
+
+/* Firmenprofil – klar für Google & KI */
+.section-profile {
+  padding: 2.25rem 0 0.5rem;
+  background: #fff;
+}
+.profile-box {
+  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem 1.35rem;
+  box-shadow: var(--shadow);
+}
+.profile-title {
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+.profile-box p {
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0 0 0.85rem;
+}
+.profile-facts {
+  list-style: none;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+.profile-facts li {
+  font-size: 0.92rem;
+  padding: 0.45rem 0.65rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.profile-cta {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+}
+.profile-cta a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 0.55rem;
+  padding: 0.15rem 0.85rem;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.04);
+}
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 650;
+  padding: 0.75rem 0;
+  color: var(--primary);
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent);
+  font-weight: 800;
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item p {
+  padding: 0 0 0.85rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}

@@ -1,8 +1,23 @@
 User-agent: *
+Allow: /
 Disallow: /admin/
+
+User-agent: GPTBot
 Allow: /
 
-User-agent: *
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://www.allround-service-stielke.com/sitemap.xml
